@@ -16,6 +16,7 @@ void Prim(MGraph pGraph)
 	int wightSet[MAXVEX];//权值的集合
 	vertexSet[0] = 0;
 	wightSet[0] = 0;
+	int b = 2;
 	//直到所有顶点被访问
 	for (int i = 0; i < pGraph.vertexNum; ++i)
 	{
@@ -41,7 +42,7 @@ void Prim(MGraph pGraph)
 				k = j;
 			}
 		}
-		//printf("(%d,%d)-->%d\n", vertexSet[k], k, pGraph.graphEdge[vertexSet[k]][k]);
+		printf("(%d,%d)-->%d\n", vertexSet[k], k, pGraph.graphEdge[vertexSet[k]][k]);
 		minWightSum += pGraph.graphEdge[vertexSet[k]][k];
 
 		x1 = pGraph.graphVertex[vertexSet[k]].x;
@@ -56,13 +57,9 @@ void Prim(MGraph pGraph)
 		{
 			settextstyle(25, 0, _T("楷体"));//设置文字格式
 			line(x1, y1, x2, y2);
-			outtextxy(300, 400, s);
-			int i = _getch();
-			if (i) {
-				clearrectangle(400, 500, 600, 600);
-			}
-
+			outtextxy(400, 40 * b, s);
 		}
+		b++;
 		//将已经寻找出路径的权值标记为0。因为之后还要更新wightSet的内容权值。也可以记为其他，不过0比较好处理。
 		wightSet[k] = 0;
 		//在加入新点后，需要更新顶点集合和权值集合。
@@ -83,7 +80,7 @@ void Prim(MGraph pGraph)
 	{
 		outtextxy(300, 450, a);
 	}
-	//printf("最小生成树的权值为：%d\n", minWightSum);
+	printf("最小生成树的权值为：%d\n", minWightSum);
 }
 
 bool compare(EdgeWight edgeWight1, EdgeWight edgeWight2)
@@ -106,32 +103,35 @@ EdgeWight* sortEdgeWight(MGraph pGraph)
 {
 	//申请一个WightEdge类型的数组,大小为pGraph.edgeNum。
 	//EdgeWight* wightEdge = (EdgeWight*)malloc(sizeof(EdgeWight) * (pGraph.edgeNum));
-	EdgeWight* wightEdge = (EdgeWight*)malloc(1000);
+	EdgeWight * wightEdge = (EdgeWight*)malloc(1000);
 	int k = 0;
-	for (int i = 1; i < pGraph.vertexNum; ++i)
-	{
-		for (int j = 0; j < i; ++j)
+	if (wightEdge) {
+		for (int i = 1; i < pGraph.vertexNum; ++i)
 		{
-			if (pGraph.graphEdge[i][j] != MINFINITE)
+			for (int j = 0; j < i; ++j)
 			{
-				wightEdge[k].edgeBegin = i;
-				wightEdge[k].edgeEnd = j;
-				wightEdge[k].wight = pGraph.graphEdge[i][j];
-				++k;
+				if (pGraph.graphEdge[i][j] != MINFINITE)
+				{
+					wightEdge[k].edgeBegin = i;
+					wightEdge[k].edgeEnd = j;
+					wightEdge[k].wight = pGraph.graphEdge[i][j];
+					++k;
+				}
 			}
 		}
+		// sort函数，在对自定义类型排序时需要告诉函数如何排序。
+		sort(wightEdge, wightEdge + pGraph.edgeNum, compare);
+		return wightEdge;
 	}
-	// sort函数，在对自定义类型排序时需要告诉函数如何排序。
-	sort(wightEdge, wightEdge + pGraph.edgeNum, compare);
-	return wightEdge;
 }
 
 //克鲁斯科尔的算法的难点在于：当新加一条边时，如何判断是否已经构成回路。
 void Kruskal(MGraph pGraph)
 {
-	printf("Kruskal算法：");
+	printf("Kruskal算法：\n");
 	//按照边的权值对边进行升序排序。
 	int wightCount = 0;
+	int b = 2;
 	EdgeWight* wightEdge = sortEdgeWight(pGraph);
 	int parent[MAXVEX];//判断新添加的线是否能和原来的图构成回路
 	for (int i = 0; i < pGraph.vertexNum; ++i)
@@ -153,9 +153,8 @@ void Kruskal(MGraph pGraph)
 			//含义：点n和点m组成的连线已经加入。
 			//parent实际存储的时形成的“孤岛”。
 			parent[n] = m;
-			//printf("(%d,%d) -->%d\n", wightEdge[i].edgeBegin, wightEdge[i].edgeEnd, wightEdge[i].wight);
+			printf("(%d,%d) -->%d\n", wightEdge[i].edgeBegin, wightEdge[i].edgeEnd, wightEdge[i].wight);
 			wightCount += pGraph.graphEdge[wightEdge[i].edgeBegin][wightEdge[i].edgeEnd];
-
 
 			x1 = pGraph.graphVertex[wightEdge[i].edgeBegin].x;
 			y1 = pGraph.graphVertex[wightEdge[i].edgeBegin].y;
@@ -168,9 +167,10 @@ void Kruskal(MGraph pGraph)
 			if (_getch())
 			{
 				settextstyle(25, 0, _T("楷体"));
-				outtextxy(400, 400, s);
+				outtextxy(400, 30*b, s);
 				line(x1, y1, x2, y2);
 			}
+			b++;
 		}
 	}
 	TCHAR a[100];
@@ -179,6 +179,6 @@ void Kruskal(MGraph pGraph)
 	{
 		outtextxy(300, 450, a);
 	}
-	//printf("最小生成树的权值：%d\n", wightCount);
+	printf("最小生成树的权值为：%d\n",wightCount);
 	free(wightEdge);
 }

@@ -12,9 +12,10 @@ using namespace std;
 
 int main()
 {
-	MGraph graph;	createGraph(&graph);
-
-	creatoption(graph);
+	MGraph graph;	
+	createGraph(&graph);
 	showGraph(graph);
+	creatoption(graph);
+	
 	return 0;
 }

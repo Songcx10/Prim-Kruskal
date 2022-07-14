@@ -7,7 +7,7 @@
 //用来显示最开始出现的选择界面
 void creatoption(MGraph pGraph)
 {
-abcd:;
+	abcd:;
 	MOUSEMSG m;
 	//菜单
 	initgraph(600, 600);
@@ -24,12 +24,14 @@ abcd:;
 	//选择框
 	fillrectangle(200, 250, 400, 290);
 	fillrectangle(200, 330, 400, 370);
+	fillrectangle(200, 410, 400, 450);
 
 	settextstyle(20, 0, _T("楷体"));//设置文字格式
 	setbkmode(TRANSPARENT);// 去掉文字背景
 
 	outtextxy(270, 260, _T("Prim算法"));
 	outtextxy(260, 340, _T("Kruskal算法"));
+	outtextxy(270, 420, _T("退出"));
 
 	while (1) {
 
@@ -52,10 +54,21 @@ abcd:;
 				goto abcd;
 			}
 		}
+		else if (m.x >= 200 && m.x <= 400 && m.y >= 410 && m.y <= 450) {
+			setlinecolor(RED);
+			rectangle(195, 405, 405, 455);
+			//如果点击了退出
+			if (m.uMsg == WM_LBUTTONDOWN) {
+				//closegraph();
+				exit(0);
+				//goto abcd;
+			}
+		}
 		else {
 			setlinecolor(WHITE);
 			rectangle(195, 245, 405, 295);
 			rectangle(195, 325, 405, 375);
+			rectangle(195, 405, 405, 455);
 		}
 	}
 	_getch();
