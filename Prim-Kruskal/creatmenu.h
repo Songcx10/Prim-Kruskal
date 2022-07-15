@@ -1,6 +1,7 @@
 #pragma once
 #include"MGraph.h"
 #include"achievepk.h"
+#include"creatmenu.h"
 #include <graphics.h>
 #include<conio.h>
 
@@ -19,7 +20,6 @@ void creatoption(MGraph pGraph)
 	outtextxy(50, 150, _T("请选择你想要使用的算法："));
 
 	setfillcolor(LIGHTBLUE);
-
 
 	//选择框
 	fillrectangle(200, 250, 400, 290);
@@ -51,6 +51,7 @@ void creatoption(MGraph pGraph)
 			//如果点击了Kruskal算法
 			if (m.uMsg == WM_LBUTTONDOWN) {
 				drawGraphK(pGraph);
+				creatoption(pGraph);
 				goto abcd;
 			}
 		}
@@ -80,7 +81,7 @@ void drawGraphP(MGraph pGraph)
 	initgraph(600, 500);
 	settextcolor(WHITE); //修改文本的颜色
 	int x1, y1, x2, y2;
-	setlinecolor(RED);     //设置画线以及圆圈框颜色，初始的红色
+	setlinecolor(WHITE);     //设置画线以及圆圈框颜色，初始的白色
 	wchar_t str[100];
 	for (int i = 1; i < pGraph.vertexNum; ++i)
 	{
@@ -117,7 +118,7 @@ void drawGraphK(MGraph pGraph)
 	initgraph(600, 500);
 	settextcolor(WHITE); //修改文本的颜色
 	int x1, y1, x2, y2;
-	setlinecolor(RED);     //设置画线以及圆圈框颜色，初始的红色
+	setlinecolor(WHITE);     //设置画线以及圆圈框颜色，初始的红色
 	wchar_t str[100];
 	for (int i = 1; i < pGraph.vertexNum; ++i)
 	{

@@ -26,7 +26,7 @@ void Prim(MGraph pGraph)
 		wightSet[i] = pGraph.graphEdge[0][i];
 	}
 	int x1, x2, y1, y2;
-	setlinecolor(WHITE);//将被选中的线条颜色变为白色
+	setlinecolor(RED);//将被选中的线条颜色变为白色
 
 	//默认从第一个顶点开始，第一个顶点已经加入
 	for (int i = 1; i < pGraph.vertexNum; ++i)
@@ -57,7 +57,7 @@ void Prim(MGraph pGraph)
 		{
 			settextstyle(25, 0, _T("楷体"));//设置文字格式
 			line(x1, y1, x2, y2);
-			outtextxy(400, 40 * b, s);
+			outtextxy(400, 30 * b, s);
 		}
 		b++;
 		//将已经寻找出路径的权值标记为0。因为之后还要更新wightSet的内容权值。也可以记为其他，不过0比较好处理。
@@ -115,7 +115,7 @@ EdgeWight* sortEdgeWight(MGraph pGraph)
 					wightEdge[k].edgeBegin = i;
 					wightEdge[k].edgeEnd = j;
 					wightEdge[k].wight = pGraph.graphEdge[i][j];
-					++k;
+					++k; 
 				}
 			}
 		}
@@ -167,7 +167,7 @@ void Kruskal(MGraph pGraph)
 			if (_getch())
 			{
 				settextstyle(25, 0, _T("楷体"));
-				outtextxy(400, 30*b, s);
+				outtextxy(400, 30 * b, s);
 				line(x1, y1, x2, y2);
 			}
 			b++;

@@ -6,6 +6,7 @@
 #include "creatmenu.h"
 #include "CreatGraph.h"
 #include "achievepk.h"
+#include"CreatSelect.h"
 #include <stdio.h>
 using namespace std;
 
@@ -13,7 +14,9 @@ using namespace std;
 int main()
 {
 	MGraph graph;	
-	createGraph(&graph);
+
+	Select(graph);
+	//createGraph(&graph);
 	showGraph(graph);
 	creatoption(graph);
 	

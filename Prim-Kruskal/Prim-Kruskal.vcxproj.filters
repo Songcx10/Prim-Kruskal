@@ -24,6 +24,15 @@
     <Text Include="Graph2.txt">
       <Filter>资源文件</Filter>
     </Text>
+    <Text Include="Graph3.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="Graph4.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="Graph5.txt">
+      <Filter>资源文件</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test.cpp">
@@ -43,7 +52,10 @@
     <ClInclude Include="achievepk.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="resourse.h">
+    <ClInclude Include="RandGraph.txt">
+      <Filter>资源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CreatSelect.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

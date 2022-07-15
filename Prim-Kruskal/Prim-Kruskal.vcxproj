@@ -92,14 +92,12 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <StackReserveSize>
-      </StackReserveSize>
+      <StackReserveSize>20</StackReserveSize>
       <HeapReserveSize>
       </HeapReserveSize>
       <HeapCommitSize>
       </HeapCommitSize>
-      <StackCommitSize>
-      </StackCommitSize>
+      <StackCommitSize>20 </StackCommitSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -150,6 +148,9 @@
     <Text Include="Graph0.txt" />
     <Text Include="Graph1.txt" />
     <Text Include="Graph2.txt" />
+    <Text Include="Graph3.txt" />
+    <Text Include="Graph4.txt" />
+    <Text Include="Graph5.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test.cpp" />
@@ -158,8 +159,9 @@
     <ClInclude Include="achievepk.h" />
     <ClInclude Include="CreatGraph.h" />
     <ClInclude Include="creatmenu.h" />
+    <ClInclude Include="CreatSelect.h" />
     <ClInclude Include="MGraph.h" />
-    <ClInclude Include="resourse.h" />
+    <ClInclude Include="RandGraph.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

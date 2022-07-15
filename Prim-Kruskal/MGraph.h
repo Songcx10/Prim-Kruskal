@@ -1,9 +1,7 @@
 #pragma once
-#pragma once
 //全部函数声明
 #define MAXVEX 100
-#define MINFINITE 0x7FFFFFFF
-typedef int EdgeType;
+#define MINFINITE 10000
 
 typedef struct//结构体定义边
 {
@@ -22,7 +20,7 @@ typedef struct//结构体定义顶点（值+坐标）
 typedef struct //定义无向连通图
 {
 	Vertex graphVertex[MAXVEX];
-	EdgeType graphEdge[MAXVEX][MAXVEX];
+	int graphEdge[MAXVEX][MAXVEX];
 	int vertexNum;
 	int edgeNum;
 }MGraph;
@@ -45,3 +43,8 @@ EdgeWight* sortEdgeWight(MGraph pGraph);
 void Kruskal(MGraph pGraph);
 //添加选择界面
 void creatoption(MGraph pGraph);
+
+//随机选择顶点和边
+void Select(MGraph pgraph);
+void RandGraph(MGraph* pGraph, int m, int n);
+void xuanRand(MGraph* pGraph);
