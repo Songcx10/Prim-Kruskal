@@ -33,22 +33,22 @@ void createGraph(MGraph* pGraph)
 	InputBox(s, 10, L"请输入想测试的用例：",L"测试用例选择",NULL,300,150,false);
 	int r = _wtoi(s);//将输入的值转化为整数
 
-	if (r > 5)
+	while (r > 5)
 	{
 		MessageBox(NULL, L"您输入的用例不合法", L"提示", MB_OK);
 		InputBox(s, 10, L"请重新输入想测试的用例：", L"测试用例选择", NULL, 300, 150, false);
-		memcpy(&r, s, sizeof(r));
+		r=_wtoi(s);
 	}
 	a[5] = char(r+'0');
 	FILE* fp(fopen(a, "r"));
 
-	int l=fscanf(fp, "%d,%d\n", &pGraph->vertexNum, &pGraph->edgeNum);
+	fscanf(fp, "%d,%d\n", &pGraph->vertexNum, &pGraph->edgeNum);
 	cout << "顶点数：" << pGraph->vertexNum << ",边数：" << pGraph->edgeNum << endl;
 	
 	initGraph(pGraph);
 	for (int i = 0; i < pGraph->vertexNum; ++i)
 	{
-		int l=fscanf(fp, "%c,%d,%d\n", &pGraph->graphVertex[i].data, &pGraph->graphVertex[i].x, &pGraph->graphVertex[i].y);
+		fscanf(fp, "%c,%d,%d\n", &pGraph->graphVertex[i].data, &pGraph->graphVertex[i].x, &pGraph->graphVertex[i].y);
 	}
 	cout << "顶点名称：";
 	for (int i = 0; i < pGraph->vertexNum; ++i)
