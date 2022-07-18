@@ -1,6 +1,5 @@
 //.cppÎÄ¼þ
 #pragma warning(disable : 4996)
-
 #pragma warning(disable : 6031)
 #include "MGraph.h"
 #include "creatmenu.h"
@@ -10,15 +9,11 @@
 #include <stdio.h>
 using namespace std;
 
-
 int main()
 {
 	MGraph graph;	
 
 	Select(graph);
-	//createGraph(&graph);
-	showGraph(graph);
-	creatoption(graph);
 	
 	return 0;
 }

@@ -92,12 +92,13 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <StackReserveSize>20</StackReserveSize>
+      <StackReserveSize>67108864</StackReserveSize>
       <HeapReserveSize>
       </HeapReserveSize>
       <HeapCommitSize>
       </HeapCommitSize>
-      <StackCommitSize>20 </StackCommitSize>
+      <StackCommitSize>
+      </StackCommitSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

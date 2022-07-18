@@ -1,15 +1,15 @@
 #pragma once
-#pragma once
 //两种算法的实现
 #include"MGraph.h"
 #include<stdio.h>
 #include<graphics.h>
 #include <algorithm>
 #include <conio.h>
+#include<iostream>
 using namespace std;
 void Prim(MGraph pGraph)
 {
-	printf("PRIM算法：\n");
+	cout << "Prim算法：" << endl;
 	int minWightSum = 0;
 	//要将顶点集合和取值集合结合起来，含义是：点vertexSet【j】到点j的权值大小为wightSet【j】。
 	int vertexSet[MAXVEX];//顶点集合
@@ -31,7 +31,7 @@ void Prim(MGraph pGraph)
 	//默认从第一个顶点开始，第一个顶点已经加入
 	for (int i = 1; i < pGraph.vertexNum; ++i)
 	{
-		int minWight = MINFINITE;
+		int minWight = 10000;
 		int k = 0;
 		for (int j = 0; j < pGraph.vertexNum; ++j)
 		{
@@ -42,7 +42,7 @@ void Prim(MGraph pGraph)
 				k = j;
 			}
 		}
-		printf("(%d,%d)-->%d\n", vertexSet[k], k, pGraph.graphEdge[vertexSet[k]][k]);
+		cout << "(" << vertexSet[k] << "," << k << ")" << "-->" << pGraph.graphEdge[vertexSet[k]][k] << endl;
 		minWightSum += pGraph.graphEdge[vertexSet[k]][k];
 
 		x1 = pGraph.graphVertex[vertexSet[k]].x;
@@ -80,7 +80,7 @@ void Prim(MGraph pGraph)
 	{
 		outtextxy(300, 450, a);
 	}
-	printf("最小生成树的权值为：%d\n", minWightSum);
+	cout << "最小生成树的权值为：" << minWightSum << endl;
 }
 
 bool compare(EdgeWight edgeWight1, EdgeWight edgeWight2)
@@ -101,8 +101,7 @@ int find(int* parent, int n)
 
 EdgeWight* sortEdgeWight(MGraph pGraph)
 {
-	//申请一个WightEdge类型的数组,大小为pGraph.edgeNum。
-	//EdgeWight* wightEdge = (EdgeWight*)malloc(sizeof(EdgeWight) * (pGraph.edgeNum));
+	//申请一个WightEdge类型的数组
 	EdgeWight * wightEdge = (EdgeWight*)malloc(1000);
 	int k = 0;
 	if (wightEdge) {
@@ -110,7 +109,7 @@ EdgeWight* sortEdgeWight(MGraph pGraph)
 		{
 			for (int j = 0; j < i; ++j)
 			{
-				if (pGraph.graphEdge[i][j] != MINFINITE)
+				if (pGraph.graphEdge[i][j] != 10000)
 				{
 					wightEdge[k].edgeBegin = i;
 					wightEdge[k].edgeEnd = j;
@@ -128,7 +127,7 @@ EdgeWight* sortEdgeWight(MGraph pGraph)
 //克鲁斯科尔的算法的难点在于：当新加一条边时，如何判断是否已经构成回路。
 void Kruskal(MGraph pGraph)
 {
-	printf("Kruskal算法：\n");
+	cout << "Kruskal算法：" << endl;
 	//按照边的权值对边进行升序排序。
 	int wightCount = 0;
 	int b = 2;
@@ -153,7 +152,7 @@ void Kruskal(MGraph pGraph)
 			//含义：点n和点m组成的连线已经加入。
 			//parent实际存储的时形成的“孤岛”。
 			parent[n] = m;
-			printf("(%d,%d) -->%d\n", wightEdge[i].edgeBegin, wightEdge[i].edgeEnd, wightEdge[i].wight);
+			cout << "(" << wightEdge[i].edgeBegin << "," << wightEdge[i].edgeEnd << ")" << "-->" << wightEdge[i].wight << endl;
 			wightCount += pGraph.graphEdge[wightEdge[i].edgeBegin][wightEdge[i].edgeEnd];
 
 			x1 = pGraph.graphVertex[wightEdge[i].edgeBegin].x;
@@ -179,6 +178,6 @@ void Kruskal(MGraph pGraph)
 	{
 		outtextxy(300, 450, a);
 	}
-	printf("最小生成树的权值为：%d\n",wightCount);
+	cout << "最小生成树的权值为：" << wightCount << endl;
 	free(wightEdge);
 }

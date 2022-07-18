@@ -51,7 +51,6 @@ void creatoption(MGraph pGraph)
 			//如果点击了Kruskal算法
 			if (m.uMsg == WM_LBUTTONDOWN) {
 				drawGraphK(pGraph);
-				creatoption(pGraph);
 				goto abcd;
 			}
 		}
@@ -87,7 +86,7 @@ void drawGraphP(MGraph pGraph)
 	{
 		for (int j = 0; j < i; ++j)
 		{
-			if (pGraph.graphEdge[i][j] > 0 && pGraph.graphEdge[i][j] < MINFINITE)
+			if (pGraph.graphEdge[i][j] > 0 && pGraph.graphEdge[i][j] < 10000)
 			{
 				x1 = pGraph.graphVertex[i].x;
 				y1 = pGraph.graphVertex[i].y;
@@ -124,7 +123,7 @@ void drawGraphK(MGraph pGraph)
 	{
 		for (int j = 0; j < i; ++j)
 		{
-			if (pGraph.graphEdge[i][j] > 0 && pGraph.graphEdge[i][j] < MINFINITE)
+			if (pGraph.graphEdge[i][j] > 0 && pGraph.graphEdge[i][j] < 10000)
 			{
 				x1 = pGraph.graphVertex[i].x;
 				y1 = pGraph.graphVertex[i].y;
