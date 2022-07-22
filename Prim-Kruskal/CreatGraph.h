@@ -30,7 +30,7 @@ void createGraph(MGraph* pGraph)
 {
 	char a[] = "Graph2.txt";
 	wchar_t s[10];
-	InputBox(s, 10, L"请输入想测试的用例：",L"测试用例选择",NULL,300,150,false);
+	InputBox(s, 10, L"请输入想测试的用例（用例编号为0~5）：",L"测试用例选择",NULL,300,150,false);
 	int r = _wtoi(s);//将输入的值转化为整数
 
 	while (r > 5)

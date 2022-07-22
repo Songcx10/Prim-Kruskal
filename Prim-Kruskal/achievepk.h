@@ -91,7 +91,7 @@ bool compare(EdgeWight edgeWight1, EdgeWight edgeWight2)
 
 int find(int* parent, int n)
 {
-	//相当于将存在这点的岛走了一遍，寻找可以添加的边
+	//寻找可以添加的边
 	while (parent[n] > -1)
 	{
 		n = parent[n];
@@ -160,7 +160,7 @@ void Kruskal(MGraph pGraph)
 			x2 = pGraph.graphVertex[wightEdge[i].edgeEnd].x;
 			y2 = pGraph.graphVertex[wightEdge[i].edgeEnd].y;
 
-			//在界面其余地方输出过程
+			//在界面其余地方输出过程 b开始时为2
 			TCHAR s[100];
 			_stprintf(s, _T("( %d, %d )--> %d"), wightEdge[i].edgeBegin, wightEdge[i].edgeEnd, wightEdge[i].wight);
 			if (_getch())

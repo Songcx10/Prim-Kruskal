@@ -85,7 +85,7 @@ void Select(MGraph pgraph)
 			rectangle(195, 405, 405, 455);
 			//如果点击了退出
 			if (m.uMsg == WM_LBUTTONDOWN) {
-				closegraph();
+				exit(0);
 				//goto abcd;
 			}
 		}
@@ -112,7 +112,7 @@ void RandGraph(MGraph* pGraph, int m, int n)//根据输入的顶点数确定提取文件中的前
 	{
 		fscanf(fp, "%c,%d,%d\n", &pGraph->graphVertex[i].data, &pGraph->graphVertex[i].x, &pGraph->graphVertex[i].y);
 	}
-	for (int a = 0; a < m - 1; a++)
+	for (int a = 0; a < m - 1; a++)//m个顶点
 	{
 		if (pGraph->graphEdge[a][a + 1] == 10000) {
 			pGraph->graphEdge[a][a + 1] = rand() % 28 + 1;

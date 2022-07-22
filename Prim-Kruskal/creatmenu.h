@@ -3,6 +3,7 @@
 #include"achievepk.h"
 #include"creatmenu.h"
 #include <graphics.h>
+#include<stdio.h>
 #include<conio.h>
 
 //用来显示最开始出现的选择界面
@@ -66,7 +67,7 @@ void creatoption(MGraph pGraph)
 		}
 		else {
 			setlinecolor(WHITE);
-			rectangle(195, 245, 405, 295);
+			rectangle(195, 245, 405,   295);
 			rectangle(195, 325, 405, 375);
 			rectangle(195, 405, 405, 455);
 		}
@@ -104,9 +105,7 @@ void drawGraphP(MGraph pGraph)
 	{
 		fillcircle(pGraph.graphVertex[i].x, pGraph.graphVertex[i].y, radio);
 		outtextxy(pGraph.graphVertex[i].x - 5, pGraph.graphVertex[i].y - 5, pGraph.graphVertex[i].data);
-	}
-	//settextstyle(20, 0, _T("楷体")); 
-
+	} 
 	Prim(pGraph);
 	_getch();
 	closegraph();
@@ -117,7 +116,7 @@ void drawGraphK(MGraph pGraph)
 	initgraph(600, 500);
 	settextcolor(WHITE); //修改文本的颜色
 	int x1, y1, x2, y2;
-	setlinecolor(WHITE);     //设置画线以及圆圈框颜色，初始的红色
+	setlinecolor(WHITE);    
 	wchar_t str[100];
 	for (int i = 1; i < pGraph.vertexNum; ++i)
 	{
@@ -142,7 +141,6 @@ void drawGraphK(MGraph pGraph)
 		fillcircle(pGraph.graphVertex[i].x, pGraph.graphVertex[i].y, radio);
 		outtextxy(pGraph.graphVertex[i].x - 5, pGraph.graphVertex[i].y - 5, pGraph.graphVertex[i].data);
 	}
-
 	Kruskal(pGraph);
 	_getch();
 	closegraph();
